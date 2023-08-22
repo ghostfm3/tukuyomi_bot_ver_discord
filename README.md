@@ -17,10 +17,6 @@
 - Twitch配信開始の自動通知 (指定のストリーマーのみ)
 
 # クレジット
-### イラスト
-[Illustration by Rei Yumesaki](https://tyc.rei-yumesaki.net/material/illust/)
-
-### 会話コーパス
 会話AIの作成には、フリー素材キャラクター「つくよみちゃん」が無料公開している会話テキストデータセットを使用しています。
 
 ■つくよみちゃん会話AI育成計画

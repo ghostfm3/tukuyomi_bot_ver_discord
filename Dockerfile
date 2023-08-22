@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 
 COPY src /app/src
 
-CMD ["uvicorn", "src.t2:app", "--host", "0.0.0.0", "--port", "8010"]
+CMD ["python3", "discord_bot.py"]

@@ -1,11 +1,12 @@
 # つくよみちゃんbot Discord版
 ## 概要
 [つくよみちゃん会話データ](https://tyc.rei-yumesaki.net/material/kaiwa-ai/)を用いたDiscord用のAIチャットbot, テキストマイニングツール。
+
 おまけ機能として地震速報, 天気予報, Twitch配信通知を搭載。
 
 ### モデル概要
 - ベースモデル：rinna/japanese-gpt2-medium
-- [使用データ：つくよみちゃんの会話データセット](https://tyc.rei-yumesaki.net/material/kaiwa-ai/)
+- 使用データ：[つくよみちゃんの会話データセット](https://tyc.rei-yumesaki.net/material/kaiwa-ai/)
 
 ### 機能一覧
 - つくよみちゃんAIとのチャット機能

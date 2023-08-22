@@ -1,0 +1,25 @@
+fastapi 
+uvicorn 
+torch 
+transformers
+--upgrade tqdm
+sentencepiece
+protobuf==3.20.0
+discord.py
+staticmap 
+geopy 
+beautifulsoup4  
+python-multipart 
+pillow==9.1.0 
+lxml 
+html5lib 
+langchain 
+ginza
+ja_ginza
+google-auth 
+google-auth-oauthlib 
+google-auth-httplib2 
+gspread 
+japanize_matplotlib 
+pandas 
+wordcloud

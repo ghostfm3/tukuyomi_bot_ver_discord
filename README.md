@@ -13,6 +13,8 @@
 
 ![ai1.png](./preview_img/ai1.png)
 
+![ai2.png](./preview_img/ai2.png)
+
 - お悩み相談機能 (OpenAI ChatGPT(GPT3.5-turbo)と連携)
 
 ![botres2.png](./preview_img/botres2.png)

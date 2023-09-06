@@ -13,7 +13,7 @@ from langchain import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
 from literal import (channel_id, image_path, image_path_2, pin_path, pin_path_2, kobeline_URL, chiyoda_URL, 
-                     jyoubann_URL, COPYRIGHT_TEXT, FONT, FONT_SIZE, l_model_name, l_template, s_names, image_data)
+                     jyoubann_URL, COPYRIGHT_TEXT, FONT, FONT_SIZE, l_model_name, l_template, x_template, s_names, image_data)
 
 config_ini = configparser.ConfigParser()
 config_ini.read('config.ini', encoding='utf-8')
@@ -195,7 +195,7 @@ def delay_line(flg):
         response = 'ごめんなさい! 路線情報を取得できませんでした😢'
     return response
 
-def ChatGPT(string:str):
+def ChatGPT(string:str, template:str)->str:
     '''
     Open AI API利用チャットレスポンス
     '''
@@ -207,7 +207,6 @@ def ChatGPT(string:str):
     openai_api_key=openai_key
     )
     
-    template = l_template
     prompt = PromptTemplate(input_variables = ["command"], template=template)
     memory = ConversationBufferMemory(memory_key="chat_history")
     chain = LLMChain(llm=gpt, prompt=prompt, verbose=True, memory=memory)
@@ -359,7 +358,7 @@ async def on_message(message):
             await message.channel.send(embed=embed)
         elif '相談内容:' in message.content:
             msg = message.content.replace('相談内容:','')
-            res = ChatGPT(msg)
+            res = ChatGPT(msg, l_template)
             # 専門外の質問だった場合
             if '回答できません' in res:
                 res = "入力された内容は悩み相談の内容と異なるために回答できません。\nもう一度内容を確認の上入力してください。"
@@ -376,21 +375,26 @@ async def on_message(message):
                 await message.channel.send(file=file, embed=embed)
             else:
                 await message.channel.send(embed=embed)   
-        elif '日記レポート' in message.content:
-           msg = message.content.replace('日記レポート','')
-           sheetname = f"2023{msg}"
-           res_rep = res_report(sheetname)
-           res_rep.plt_counter()
-           res_rep.wordcloud_result()
-           res_rep.plt_network_graph()
-           res_rep.sentiment_analysis()
-           counter = 1  
+        elif '日記レポート' in message.content:  
+            msg = message.content.replace('日記レポート','')
+            sheetname = f"2023{msg}"
+            res_rep = res_report(sheetname)
+            top10_words = res_rep.plt_counter()
+            res_rep.wordcloud_result()
+            res_rep.plt_network_graph()
+            res_rep.sentiment_analysis()
+            res = ChatGPT(top10_words,x_template)
+            counter = 1  
+            response = f"```{res}```"
                      
-           # 回数分ループ
-           for image_info in image_data:
-                embed, file = embed_dialy_report(sheetname, image_info, counter)
-                await message.channel.send(file=file, embed=embed)    
-                counter += 1    
+            # 回数分ループ
+            for image_info in image_data:
+                    embed, file = embed_dialy_report(sheetname, image_info, counter)
+                    await message.channel.send(file=file, embed=embed)    
+                    counter += 1
+            embed = discord.Embed(title=f"{sheetname}総評", color=discord.Color.blue())
+            embed.add_field(name="当月の傾向など", value=response, inline=False)
+            await message.channel.send(embed=embed)
         else:        
             response = generate_reply(message.content)
             await message.channel.send(response)       

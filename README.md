@@ -25,6 +25,10 @@
 
 ![repo2.png](./preview_img/repo2.png)
 
+※【追加】総評出力
+
+![repo2_1.png](./preview_img/repo2_1.png)
+
 - 地震速報の自動通知
 
 ![eq.png](./preview_img/eq.png)

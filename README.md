@@ -25,7 +25,7 @@
 
 ![repo2.png](./preview_img/repo2.png)
 
-※【追加】総評出力
+※【追加】ChatGPTによる上位語においての日記総評
 
 ![repo2_1.png](./preview_img/repo2_1.png)
 

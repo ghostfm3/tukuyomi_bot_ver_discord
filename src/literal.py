@@ -54,7 +54,4 @@ cell_range = "C:C"
 json_path = "./google_spread_sheet/copper-seeker-396204-8a2ea5b4e9e0.json"
 sentiment_dict_path = "./google_spread_sheet/pn_formatted.csv"
 
-# sentiment analysis
-stop_word = ['こと', 'よう', 'そう', 'これ', 'それ', 'あれ', 'どれ', 'の', 'ん', 'ぼく', 
-        'もの', 'たち','一','どこ', 'わけ', 'つもり', 'そもそも', 'ところ','ため','今','一切','自分','奴','他','身','気','年','度','1']
 

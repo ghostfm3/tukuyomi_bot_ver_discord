@@ -4,7 +4,7 @@ import torch
 torch.set_default_tensor_type('torch.cuda.FloatTensor')
 device = torch.device("cuda")
 tokenizer = AutoTokenizer.from_pretrained("./model/model_xx")
-tokenizer.do_lower_case = True # due to some bug of tokenizer config loading
+tokenizer.do_lower_case = True 
 model = AutoModelForCausalLM.from_pretrained("./model/model_xx").to(device) 
 tokenizer.padding_side = "left"
 

@@ -17,7 +17,6 @@ class res_report(TakeInformation):
     def __init__(self, sheetname):
         '''
         TakeInformationクラスからの継承
-        コンストラクタ
         '''
         super().__init__()
         self.rmlist = self.take_sent_of_sheet(sheetname)

@@ -4,7 +4,6 @@ import urllib.request
 import ginza
 import spacy
 from bs4 import BeautifulSoup
-from xml.etree import ElementTree
 
 config_ini = configparser.ConfigParser()
 config_ini.read('config.ini', encoding='utf-8')

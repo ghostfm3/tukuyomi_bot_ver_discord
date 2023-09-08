@@ -12,8 +12,10 @@ from langchain.llms import OpenAI
 from langchain import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
-from literal import (channel_id, image_path, image_path_2, pin_path, pin_path_2, kobeline_URL, chiyoda_URL, 
-                     jyoubann_URL, COPYRIGHT_TEXT, FONT, FONT_SIZE, l_model_name, l_template, x_template, s_names, image_data)
+from literal import (channel_id, image_path, image_path_2, 
+                    pin_path, pin_path_2, kobeline_URL, chiyoda_URL, 
+                    jyoubann_URL, COPYRIGHT_TEXT, FONT, FONT_SIZE, 
+                    l_model_name, l_template, x_template, s_names, image_data)
 
 config_ini = configparser.ConfigParser()
 config_ini.read('config.ini', encoding='utf-8')

@@ -12,10 +12,8 @@ from langchain.llms import OpenAI
 from langchain import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
-from literal import (channel_id, image_path, image_path_2, 
-                    pin_path, pin_path_2, kobeline_URL, chiyoda_URL, 
-                    jyoubann_URL, COPYRIGHT_TEXT, FONT, FONT_SIZE, 
-                    l_model_name, l_template, x_template, s_names, image_data)
+from literal import (channel_id, diary_id, image_path, image_path_2, pin_path, pin_path_2, kobeline_URL, chiyoda_URL, 
+                     jyoubann_URL, COPYRIGHT_TEXT, FONT, FONT_SIZE, l_model_name, l_template, x_template, s_names, image_data)
 
 config_ini = configparser.ConfigParser()
 config_ini.read('config.ini', encoding='utf-8')
@@ -377,7 +375,13 @@ async def on_message(message):
                 await message.channel.send(file=file, embed=embed)
             else:
                 await message.channel.send(embed=embed)   
-        elif '日記レポート' in message.content:  
+        elif '日記レポート' in message.content: 
+            #日記チャネル以外では使用出来なくする 
+            if message.channel.id != diary_id:
+                await message.channel.send('本チャネルでは対応していないコマンドです')
+                return 
+            
+            #日記チャネルのみ
             msg = message.content.replace('日記レポート','')
             sheetname = f"2023{msg}"
             res_rep = res_report(sheetname)
